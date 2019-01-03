@@ -2,6 +2,12 @@ FROM baskoning/gamebase:latest
 
 COPY Files /
 
-EXPOSE 5000
+ARG PORT=production
+ENV PORT="${PORT}"
 
-CMD ifconfig & python startflask.py 192.168.99.100 5000
+ARG LANIP="192.168.99.100"
+ENV LANIP="${LANIP}"
+
+EXPOSE ${PORT}
+
+CMD ifconfig & python startflask.py ${LANIP} ${PORT}
