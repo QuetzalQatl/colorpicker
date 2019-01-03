@@ -7,11 +7,12 @@ import random
 import traceback
 import socket
 import sys
+import os
 
 #this program needs:
 #pip install flask flask-socketio eventlet
 
-DefaultPort=5000
+PORT=5000
 FlaskSecretKey='18675896193567981538967158939071677471246994992999696'
 
 CLIENTS = {} # dict to track active rooms
@@ -131,24 +132,14 @@ def on_disconnect():
     CLIENTS.pop(currentSocketId, None)
 
 if __name__ == '__main__':
-	if len(sys.argv)==2:
-		try:
-			DefaultPort=abs(int(sys.argv[1]))
-		except:
-			print ('Use a positive whole number as port number')
-	elif len(sys.argv)==3:
-		try:
-			LANIP=sys.argv[1]
-			#do some sanity checking?
-		except:
-			print ('not a valid ip addres')
-		try:
-			DefaultPort=abs(int(sys.argv[2]))
-		except:
-			print ('Use a positive whole number as port number')
+	try:
+		PORT=abs(int(os.getenv('PORT')))
+	except:
+		pass
+	LANIP=os.getenv('LANIP', '192.168.99.100')
 	WANIP=getWideIpAdres()
 	print (localIP)
 	print (LANIP)
 	print (WANIP)
-	print (DefaultPort)
-	socketio.run(app, debug=False, port=DefaultPort, host="0.0.0.0")
+	print (PORT)
+	socketio.run(app, debug=False, port=PORT, host="0.0.0.0")
