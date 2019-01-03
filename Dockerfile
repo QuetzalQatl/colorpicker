@@ -1,6 +1,6 @@
 FROM baskoning/gamebase:latest
 
-COPY ColorPicker /
+COPY Files /
 
 EXPOSE 5000
 
