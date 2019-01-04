@@ -27,7 +27,7 @@
   <button id="SetColorButton">SetColor</button>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script type="text/javascript" charset="utf-8">
-    var socket = io.connect('http://%%CONNECTTO%%:5000/colorlobbie');
+    var socket = io.connect('http://%%CONNECTTO%%/colorlobbie');
 
     // Socket events:
     socket.on('connect', function() {

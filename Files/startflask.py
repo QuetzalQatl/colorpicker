@@ -56,11 +56,11 @@ def getWideIpAdres():
 
 def GetConnectTo(remote_address):
     if (remote_address==localIP):
-        return localIP
+        return localIP+':'+PORT
     elif (remote_address[:4]=='192.'):
-        return LANIP
+        return LANIP+':'+PORT
     else:
-        return WANIP
+        return WANIP+':'+PORT
 
 @app.route('/')
 def app_index():
