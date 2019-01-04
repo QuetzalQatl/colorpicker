@@ -10,4 +10,4 @@ ENV LANIP="${LANIP}"
 
 EXPOSE ${PORT}
 
-CMD ifconfig & python startflask.py ${LANIP} ${PORT}
+CMD python startflask.py
