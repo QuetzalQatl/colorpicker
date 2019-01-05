@@ -12,19 +12,144 @@
     margin: 0px;
     min-height: 100%;
   }
-  </style>
+  
+  .slidecontainer {
+    width: 100%;
+	height: 36px;
+	
+  }
+  
+  .sliderR {
+    -webkit-appearance: none;
+    width: 98%;
+    height: 32px;
+    background: #F03030;
+    outline: none;
+    opacity: 0;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .sliderR:hover {
+    opacity: 0.8;
+  }
+  
+  .sliderR::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  .sliderR::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  .sliderG {
+    -webkit-appearance: none;
+    width: 98%;
+    height: 32px;
+    background: #30F030;
+    outline: none;
+    opacity: 0;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .sliderG:hover {
+    opacity: 0.9;
+  }
+  
+  .sliderG::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  .sliderG::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  .sliderB {
+    -webkit-appearance: none;
+    width: 98%;
+    height: 32px;
+    background: #3030F0;
+    outline: none;
+    opacity: 0;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .sliderB:hover {
+    opacity: 0.8;
+  }
+  
+  .sliderB::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  .sliderB::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    background: #303030;
+    cursor: pointer;
+  }
+  
+  
+  .box {
+    width:98%;
+    height:30px;
+    position:fixed;
+    margin-left:10px; 
+    margin-top:10px; 
+    top:0px;
+    left:0px;
+}
+  
+</style>
 </head>
 <body>
+<table class="box">
+    <tr>
+        <td>
   <div class="slidecontainer">
-  <input type="range" min="0" max="255" value="255" class="slider" id="R">
+  <input type="range" min="0" max="255" value="255" class="sliderR" id="R">
   </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
   <div class="slidecontainer">
-  <input type="range" min="0" max="255" value="255" class="slider" id="G">
+  <input type="range" min="0" max="255" value="255" class="sliderG" id="G">
   </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
   <div class="slidecontainer">
-    <input type="range" min="0" max="255" value="255" class="slider" id="B">
+  <input type="range" min="0" max="255" value="255" class="sliderB" id="B">
   </div>
-  <button id="SetColorButton">SetColor</button>
+        </td>
+    </tr>
+</table>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
   <script type="text/javascript" charset="utf-8">
     var socket = io.connect('http://%%CONNECTTO%%/colorlobbie');
@@ -90,7 +215,15 @@
     }
 
     // document events:
-    document.getElementById('SetColorButton').addEventListener("click", function (evt) {
+    document.getElementById('R').addEventListener("mouseup", function (evt) {
+      setColor();
+    });
+	
+	document.getElementById('G').addEventListener("mouseup", function (evt) {
+      setColor();
+    });
+	
+	document.getElementById('B').addEventListener("mouseup", function (evt) {
       setColor();
     });
 

@@ -64,11 +64,11 @@ def GetConnectTo(remote_address):
 
 @app.route('/')
 def app_index():
-    a=render_template('index.html')
+    a= render_template('color.html')
     a=a.replace('%%CONNECTTO%%',GetConnectTo(request.remote_addr))
-    print (request.remote_addr, '/ --> /index.html')
+    print (request.remote_addr, '/ --> /color.html')
     return a
-
+	
 @app.route('/color')
 def app_color():
     a= render_template('color.html')
