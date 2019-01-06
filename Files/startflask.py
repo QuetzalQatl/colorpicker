@@ -121,9 +121,16 @@ def on_requestColor():
 
 @socketio.on('connect', namespace='/colorlobbie')
 def on_connect():
-    print('Client '+request.sid+' connected')
-    currentSocketId = request.sid
-    CLIENTS[currentSocketId]=getFreeColor()
+	print('Client '+request.sid+' connected')
+	currentSocketId = request.sid
+	CLIENTS[currentSocketId]=getFreeColor()
+	print ("request.base_url="+str(request.base_url))
+	print ("request.referrer="+str(request.referrer))
+	print ("request.host="+str(request.host))
+	print ("request.host_url="+str(request.host_url))
+	print ("request.namespace="+str(request.namespace))
+	print ("request.remote_addr="+str(request.remote_addr))
+	print ("request.user_agent="+str(request.user_agent))
 
 @socketio.on('disconnect', namespace='/colorlobbie')
 def on_disconnect():
@@ -138,8 +145,11 @@ if __name__ == '__main__':
 		pass
 	LANIP=os.getenv('LANIP', '192.168.99.100')
 	WANIP=getWideIpAdres()
-	print (localIP)
-	print (LANIP)
-	print (WANIP)
-	print (PORT)
+	print ()
+	print ("colorpicker")
+	print ("v0.22")
+	print ("localIP="+localIP)
+	print ("LANIP="+LANIP)
+	print ("WANIP="+WANIP)
+	print ("PORT="+str(PORT))
 	socketio.run(app, debug=False, port=PORT, host="0.0.0.0")
