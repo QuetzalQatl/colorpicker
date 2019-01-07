@@ -13,7 +13,7 @@ import os
 #pip install flask flask-socketio eventlet
 
 PORT=5000
-FlaskSecretKey='18675896193567981538967158939071677471246994992999696'
+FlaskSecretKey=os.urandom(512)
 
 CLIENTS = {} # dict to track active rooms
 localIP='127.0.0.1'
